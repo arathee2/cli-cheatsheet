@@ -1,0 +1,46 @@
+# syntax
+command -options arguments
+
+Short options are preceded by a single dash (-), and multiple short options could be strung together using only one single dash
+Long options are preceded by a double dashe (--) and cannot be strung together.
+
+# misc
+exit
+date
+cal
+df
+free
+
+# moving around
+pwd
+cd
+ls
+file
+less
+reset
+
+# file manipulation
+cp
+mv
+mkdir
+rm
+ln
+
+# help
+type
+which
+help
+man
+whatis
+apropos
+
+# redirection
+cat
+sort
+uniq
+grep
+wc
+head
+tail
+tee
+
