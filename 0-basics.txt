@@ -102,4 +102,42 @@ clear            # clears screen; equivalent to ctrl-l
 -------------------------------------------------------------------------------
 Permissions
 -------------------------------------------------------------------------------
+# syntax in ls
+-rwxrwxrwx      # read, write and executable permissions for user, group and the world (rest of the users)
+                # first characters represents a file (-),  directory (d), a symbolic link (l), character (c) special file or block (b) special file
+
+# commands
+id              # displays user identity
+chmod           # change (add or remove) file/directory read/write/execute permission
+chown           # change file/directory user/group owner
+chgrp           # change file/directory group owner only; prefer chown
+umask           # remove file/directory read/write/execute/permission
+su              # substitute user: login using a different user
+sudo            # execute command as another user
+passwd          # change password of current or any other user
+
+-------------------------------------------------------------------------------
+Process
+-------------------------------------------------------------------------------
+ps              # list processes
+top             # a more verbose and live version of ps
+
+ctrl-c          # terminate process safely
+ctrl-z          # supend process: move process from foregorund to background
+
+emacs &         # start emacs and immediately move it to background returning the prompt back
+
+jobs            # processes running in background in the terminal listed along with their jobspec (a number listed in square brackets to be used with bg and fg commands)
+bg              # resume running suspended process (suspended using ctrl-z) in the background. Use `bg %<jobspec>` if multiple processes are suspended
+fg              # `fg %<jobspec>` bring the specified background job to foreground. Use `jobs` to see what number to use. No number required for a single background job.
+
+kill            # send signal (terminate, suspend, continue, stop, kils, etc.) to a process. Signals could be sent to processes that a user owns (unless you are a superuser).
+killall         # send signal to multiple processes of a single program
+shutdown        # halt, reboot or power off system
+
+# misc
+pstree          # process list in tree format
+vmstat          # show cpu, memory usage
+xload           # show system resource usage in a graphical window
+tload           # show system resource usage in the terminal. ctrl-c to terminate.
 
