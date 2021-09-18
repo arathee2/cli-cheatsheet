@@ -1,0 +1,19 @@
+EE>-------------------------------------------------------------------------------
+Environment
+-------------------------------------------------------------------------------
+# commands
+printenv             # show environment variables
+set                  # show shell AND environment variables
+export               # 
+alias                # list of aliases
+source filename      # read file; often used with files that make changes to the environment
+
+# files
+~/.bash_profile      # runs at the time of login shell
+~/.bashrc            # runs at the time of non-login shells
+
+-------------------------------------------------------------------------------
+Customize Shell Prompt
+-------------------------------------------------------------------------------
+export PS1='%1d $ '  # Custom prompt string 1: https://gist.github.com/arathee2/fc102a31cc8d69780946b24622706196
+
