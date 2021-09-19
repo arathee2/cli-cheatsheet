@@ -1,0 +1,72 @@
+-------------------------------------------------------------------------------
+Package Management
+-------------------------------------------------------------------------------
+# find package in repository
+apt-get update; apt-cache search emacs          # debian system
+yum search emacs                                # red-hat system
+
+# install package from repository: dependencies checked and installed automatically
+apt-get update; apt-get install emacs
+yum install emacs
+
+# install package using from source file: make sure dependencies are already present
+dpkg -i file
+rpm -i file
+
+# update package from repository
+apt-get update; apt-get upgrade
+yum update
+
+# update package using source file
+dpkg -i file                                    # same as installing from source; re-installs and replaces old version
+rpm -U file
+
+# uninstall package
+apt-get remove emacs
+yum erase emacs
+
+# list package
+dpkg -l
+rpm -qa
+
+# check if package is installed
+dpkg -s name
+rpm -q name
+
+# package description
+apt-cache show name
+yum info name
+
+-------------------------------------------------------------------------------
+Storage
+-------------------------------------------------------------------------------
+mount                                           # mount file system
+unmount                                         # unmount file system
+fsck                                            # file system check and repair
+fdisk                                           # manipulate disk partition table
+mkfs                                            # make file system
+dd                                              # convert and copy file
+genisoimg                                       # create ISO 9660 image file (used to write CD-ROMs and DVDs)
+wodim                                           # write data to optical storage media
+md5sum                                          # calculate md5 checksum
+
+-------------------------------------------------------------------------------
+Networking
+-------------------------------------------------------------------------------
+ping                                            # check if website is working by sending and receiving packets
+traceroute                                      # lists all hops that one needs to take to reach a location
+ip                                              # examine system's network config and routing tables
+netstat                                         # stats related to network
+ftp                                             # transfer files over a network
+wget                                            # download files
+ssh                                             # log in to a remote machine with an ssh server
+
+-------------------------------------------------------------------------------
+Search Files
+-------------------------------------------------------------------------------
+locate                                          # find files by name
+find                                            # find files in a directory hierarchy
+xargs                                           # 
+touch                                           # change file time
+stat                                            # display file or file system status
+
