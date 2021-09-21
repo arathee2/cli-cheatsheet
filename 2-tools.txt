@@ -65,8 +65,17 @@ ssh                                             # log in to a remote machine wit
 Search Files
 -------------------------------------------------------------------------------
 locate                                          # find files by name
-find                                            # find files in a directory hierarchy
-xargs                                           # 
-touch                                           # change file time
-stat                                            # display file or file system status
+find                                            # find or act on files using tests (file name, type, size, permission), operators (and, or, not) and actions (print, delete, list)
+xargs                                           # take in standard input and feed it as arguments to a command
+touch                                           # update file modification/access time
+stat                                            # display details about a file or file system
+
+-------------------------------------------------------------------------------
+Archiving and Backup
+-------------------------------------------------------------------------------
+gzip                                            # compress and decompress files
+bzip2                                           # compress and decompress files (better compression than gzip at the cost of speed)
+tar                                             # archive and unarchive files
+zip                                             # 
+rsync                                           # 
 
