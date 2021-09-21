@@ -71,11 +71,29 @@ touch                                           # update file modification/acces
 stat                                            # display details about a file or file system
 
 -------------------------------------------------------------------------------
-Archiving and Backup
+Compressing and Archiving
 -------------------------------------------------------------------------------
+tar                                             # archive and unarchive files
 gzip                                            # compress and decompress files
 bzip2                                           # compress and decompress files (better compression than gzip at the cost of speed)
-tar                                             # archive and unarchive files
-zip                                             # 
-rsync                                           # 
+zip                                             # archive and compress together
+unzip                                           # unarchive contents of a zip file
+rsync                                           # sync local and remote files and directories
+
+-------------------------------------------------------------------------------
+Text Processing
+-------------------------------------------------------------------------------
+grep                                            # use regex to search for patterns of text in files, directories, command outputs and much more.
+cat                                             # concatenate files and send output to stdout
+sort                                            # sort lines of text files
+uniq                                            # report or omit repeated lines of sorted text
+cut                                             # 
+paste                                           # 
+join                                            # 
+comm                                            # 
+diff                                            # 
+patch                                           # 
+tr                                              # 
+sed                                             # 
+aspell                                          # 
 
