@@ -87,13 +87,14 @@ grep                                            # use regex to search for patter
 cat                                             # concatenate files and send output to stdout
 sort                                            # sort lines of text files
 uniq                                            # report or omit repeated lines of sorted text
-cut                                             # 
-paste                                           # 
-join                                            # 
-comm                                            # 
-diff                                            # 
-patch                                           # 
-tr                                              # 
-sed                                             # 
-aspell                                          # 
+cut                                             # extract text from each line of text using character or field (if delimited) position
+paste                                           # put together two or more files together line by line
+join                                            # similar to paste; join multiple files with columns based on a **shared** sorted key
+comm                                            # see shared text and text that is unique to files
+diff                                            # similar to comm but with added functionality
+patch                                           # update a file using diff's output
+tr                                              # transliterate: find characters of text and change them to something
+sed                                             # stream editor: use this to append, delete, insert, print, search & replace and transliterate text
+aspell                                          # interactive spell checker
+split                                           # split giles into pieces
 
