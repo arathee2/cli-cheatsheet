@@ -98,3 +98,22 @@ sed                                             # stream editor: use this to app
 aspell                                          # interactive spell checker
 split                                           # split giles into pieces
 
+-------------------------------------------------------------------------------
+Formatting Output
+-------------------------------------------------------------------------------
+nl                                              # number lines
+fold                                            # wrap lines at specified width
+fmt                                             # fold with some additional functionality (like folding lines that start with a specific string)
+pr                                              # paginate text (leaves space for header and footer along with adding name, date and page number to output)
+printf                                          # c-like printing
+groff                                           # used to format documents using a markup-like syntax; can output to ASCII, PostScript, PDF and many more formats.
+
+-------------------------------------------------------------------------------
+Printing
+-------------------------------------------------------------------------------
+pr                                              # convert text files for printing
+lpr                                             # send files to printer for printing; a more sophisticated `lp` is an alternative command
+a2ps                                            # format files for printing on a PostScript printer
+lpstat                                          # show printer status
+lpq                                             # show printing queue
+lprm                                            # cancel print jobs
