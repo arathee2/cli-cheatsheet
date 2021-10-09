@@ -117,3 +117,8 @@ a2ps                                            # format files for printing on a
 lpstat                                          # show printer status
 lpq                                             # show printing queue
 lprm                                            # cancel print jobs
+
+-------------------------------------------------------------------------------
+Compile
+-------------------------------------------------------------------------------
+make                                            # compile programs
