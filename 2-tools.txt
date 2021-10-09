@@ -96,7 +96,7 @@ patch                                           # update a file using diff's out
 tr                                              # transliterate: find characters of text and change them to something
 sed                                             # stream editor: use this to append, delete, insert, print, search & replace and transliterate text
 aspell                                          # interactive spell checker
-split                                           # split giles into pieces
+split                                           # split files into pieces
 
 -------------------------------------------------------------------------------
 Formatting Output
