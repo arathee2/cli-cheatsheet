@@ -1,0 +1,33 @@
+#!/bin/bash                                       # shebang followed by path of interpreter to use to run this script
+
+# variables
+variable="value"                                  # notice there is no space around the equality symbol; variable will always be a string regardless of the data type being assigned
+echo $variable                                    # $variable expands to "value"
+echo $variable$variable                           # concatenation; expands to "valuevalue"
+
+declare -r CONSTANT="value"                       # declaring a constant; rarely used convention
+
+echo $variable_2                                  # expand `variable_2` and echo
+echo ${variable}_2                                # expand `variable`, concatenate `_2` to it and echo
+
+# here command
+command << token                                  # command takes text as input; use <<- to ignore leading tabs used for better readability
+text
+token
+
+# functions
+function function_name {                          # define a function; alternatively, use `function_name () {`
+    local variable                                # avoid conflicts with global `variable`
+    variable=$1                                   # set variable to the first argument passed to the function
+    command
+    command
+    .
+    .
+    .
+    command
+    return                                        # optional
+}
+
+function_name $var1 $var2 ...                     # call function with multiple arguments
+
+# conditional statements
