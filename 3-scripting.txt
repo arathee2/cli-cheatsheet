@@ -3,12 +3,16 @@
 # variables
 variable="value"                                  # notice there is no space around the equality symbol; variable will always be a string regardless of the data type being assigned
 echo $variable                                    # $variable expands to "value"
-echo $variable$variable                           # concatenation; expands to "valuevalue"
+echo "$variable"                                  # same as above but more defensive to use quotes around variable
+echo "$variable$variable"                         # concatenation; expands to "valuevalue"
 
 declare -r CONSTANT="value"                       # declaring a constant; rarely used convention
 
-echo $variable_2                                  # expand `variable_2` and echo
-echo ${variable}_2                                # expand `variable`, concatenate `_2` to it and echo
+echo "$variable_2"                                # expand `variable_2` and echo
+echo "${variable}_2"                              # expand `variable`, concatenate `_2` to it and echo
+
+# exit command
+exit [integer]                                    # every command returns an exit status; 0 indicates success; 1-255 indicate different types of failures; uses exit status of last command if no integer is used
 
 # here command
 command << token                                  # command takes text as input; use <<- to ignore leading tabs used for better readability
@@ -25,9 +29,55 @@ function function_name {                          # define a function; alternati
     .
     .
     command
-    return                                        # optional
+    return [int]                                  # optional statement; int value represents exit status of function
 }
 
-function_name $var1 $var2 ...                     # call function with multiple arguments
+function_name "$var1" "$var2" ...                 # call function with multiple arguments
 
 # conditional statements
+## if statement syntax
+if commands; then
+   commands
+[elif commands; then
+     commands]
+[else 
+     commands]
+fi
+
+## testing commands/expressions: refer page 408 of TLCL for details on file tests
+if [ expression ]; then
+    commands
+fi
+
+[ expression ]                                    # returns true (1) or false (0); need to escape special characters such as <, >, (, )
+[ expression && expression ]                      # AND test; `&&` and `-a` are equivalent
+[ expression || expression ]                      # OR test; `||` and `-o` are equivalent
+[ ! (expression) ]                                # NOT test
+
+[ "$string" ]                                     # true is string is not null
+[ -n "$string" ]                                  # true if length of string is greather than zero
+[ -z "$string" ]                                  # true if length of string is zero
+[ "$string1" == "$string2" ]
+[ "$string1" != "$string2" ]
+[ "$string1" > "$string2" ]                       # true if $string1 sorts after $string2
+[ "$string1" < "$string2" ]
+
+[ $integer1 -eq $integer2 ]                       # do not use quotes around variables for integer tests
+[ $integer1 -ne $integer2 ]
+[ $integer1 -le $integer2 ]
+[ $integer1 -lt $integer2 ]
+[ $integer1 -ge $integer2 ]
+[ $integer1 -gt $integer2 ]
+
+[ "$file1" -f "$file2" ]                          # returns true if both files have same inode number on disk
+[ -w "$file" ]                                    # returns true if file is writable
+
+[[ expression ]]                                  # same as [ expression ] but also supports regex pattern and pathname expansion matching; no need to escape special characters such as <, >, (, )
+[[ "$string1" =~ ^[0-9]+$ ]]
+[[ "$file" == foo.* ]]
+
+(( expression ))                                  # used only for interger tests; does not require $ and quotes around variable name; no need to escape special characters such as <, >, (, )
+(( VALUE == 0 ))
+(( ((VALUE % 2)) == 0 ))
+
+# reading keyboard input
