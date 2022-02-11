@@ -15,9 +15,9 @@ echo "${variable}_2"                              # expand `variable`, concatena
 exit [integer]                                    # every command returns an exit status; 0 indicates success; 1-255 indicate different types of failures; uses exit status of last command if no integer is used
 
 # here command
-command << token                                  # command takes text as input; use <<- to ignore leading tabs used for better readability
+command << _EOF_                                  # command takes text as input; _EOF_ is a token, any token could be used; use <<- to ignore leading tabs used for better readability
 text
-token
+_EOF_
 
 # functions
 function function_name {                          # define a function; alternatively, use `function_name () {`
@@ -44,7 +44,7 @@ if commands; then
      commands]
 fi
 
-## testing commands/expressions: refer page 408 of TLCL for details on file tests
+## testing commands/expressions: refer chapter 27, page 408 of TLCL for details on file tests
 if [ expression ]; then
     commands
 fi
@@ -81,3 +81,6 @@ fi
 (( ((VALUE % 2)) == 0 ))
 
 # reading keyboard input
+read x                                            # read keyboard input and assign to variable `x`
+read                                              # read input and assign to shell variable `REPLY`
+read x1 x2 x3                                     # read inputs separated by space and assign to three variables; if less inputs than variables -> remaining variables are ""; if more inputs than variables than last variable has all the remaining inputs.
