@@ -1,4 +1,4 @@
-#!/bin/bash                                       # shebang followed by path of interpreter to use to run this script
+#!/bin/bash                                       # shebang followed by path of interpreter to use to run this script; use -x option at the end to enable code tracing
 
 # variables
 variable="value"                                  # notice there is no space around the equality symbol; variable will always be a string regardless of the data type being assigned
@@ -11,13 +11,13 @@ declare -r CONSTANT="value"                       # declaring a constant; rarely
 echo "$variable_2"                                # expand `variable_2` and echo
 echo "${variable}_2"                              # expand `variable`, concatenate `_2` to it and echo
 
+# reading keyboard input
+read x                                            # read keyboard input and assign to variable `x`
+read                                              # read input and assign to shell variable `REPLY`
+read x1 x2 x3                                     # read inputs separated by space and assign to three variables; if less inputs than variables -> remaining variables are ""; if more inputs than variables than last variable has all the remaining inputs.
+
 # exit command
 exit [integer]                                    # every command returns an exit status; 0 indicates success; 1-255 indicate different types of failures; uses exit status of last command if no integer is used
-
-# here command
-command << _EOF_                                  # command takes text as input; _EOF_ is a token, any token could be used; use <<- to ignore leading tabs used for better readability
-text
-_EOF_
 
 # functions
 function function_name {                          # define a function; alternatively, use `function_name () {`
@@ -80,7 +80,31 @@ fi
 (( VALUE == 0 ))
 (( ((VALUE % 2)) == 0 ))
 
-# reading keyboard input
-read x                                            # read keyboard input and assign to variable `x`
-read                                              # read input and assign to shell variable `REPLY`
-read x1 x2 x3                                     # read inputs separated by space and assign to three variables; if less inputs than variables -> remaining variables are ""; if more inputs than variables than last variable has all the remaining inputs.
+## case statement
+case variable in
+    pattern [| pattern]...) commands ;;           # use `;;&` to continue test since `;;` ends execution of case statement			   
+esac
+			    
+# loops
+while condition; do
+      commands
+      continue
+      break
+done
+
+while read x y; do
+      commands
+done < file.txt                                   # file contains two strings separated by space in each line; loop continues until all lines are read
+
+cat file.txt > while read x y; do                 # same as above but with piping
+    commands
+done
+
+until condition; do
+      commands
+done
+
+# here command
+command << _EOF_                                  # command takes text as input; _EOF_ is a token, any token could be used; use <<- to ignore leading tabs used for better readability
+text
+_EOF_
