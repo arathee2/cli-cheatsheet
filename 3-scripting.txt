@@ -104,6 +104,22 @@ until condition; do
       commands
 done
 
+for var in words; do
+    commands
+done
+
+for (( expression1; expression2; expression3 )); do
+    commands
+done
+
+# positional parameters
+- Access positional parameters of program or function by using $0, $1, ..., $9, ${10}, ${11}, ...
+- $# returns number of paramaters
+- $* expands into a list of positional parameters starting from 1. "$*" expands into one string containing all parameters separated by character present in the IFS shell variable.
+- $@ expands into a list of positional parameters starting from 1. "$@" expands each individual parameters as "$*".
+- `shift` shifts values in positional parameters by one i.e. $1 becomes $2, $2 becomes $3 and so on. $0 is unchanged.
+- `$(basename "$0")` extracts the filename from full path of a program name if $0 contains program name.
+
 # here command
 command << _EOF_                                  # command takes text as input; _EOF_ is a token, any token could be used; use <<- to ignore leading tabs used for better readability
 text
