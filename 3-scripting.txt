@@ -172,6 +172,34 @@ echo ${var^}                                      # change first character of `v
 echo $((-4))
 echo $((3-4))
 
+# arrays: only single dimensional arrays supported
+a = (value1 value2 ...)                           # create array; value are assigned starting at index zero
+b = ([0]=value1, [5]=value2)                      # create array; assign value at custom indices
+
+declare -a c
+b[0] = value1                                     # alternative way to create `b` as shown above
+b[5] = value2
+
+echo ${a[*]}                                      # print array
+echo "${a[*]}"
+echo ${a[@]}
+echo "${a[@]}"
+
+echo ${#a[@]}                                     # number of elements in array
+echo ${#a[0]}                                     # length of item present at index 0 in array
+
+echo "${!a[@]}"                                   # print all indices (tht actually exist)
+echo "${!a[*]}"                                   # print all values (that actually exist)
+
+a += (value3 value4 ...)                          # append values to array
+
+unset a[0]                                        # delete element at index zero in array
+unset a                                           # delete array
+
+declare -A colors                                 # create an associate array --> array with string indices
+colors["red"]="#ff0000"
+colors["green"]="#00ff00"
+colors["blue"]="#0000ff"
 
 # here command
 command << _EOF_                                  # command takes text as input; _EOF_ is a token, any token could be used; use <<- to ignore leading tabs used for better readability
