@@ -120,6 +120,59 @@ done
 - `shift` shifts values in positional parameters by one i.e. $1 becomes $2, $2 becomes $3 and so on. $0 is unchanged.
 - `$(basename "$0")` extracts the filename from full path of a program name if $0 contains program name.
 
+# string expansion
+a = "my"
+echo $a                                           # expand `a` as "my"
+echo ${a}                                         # print "my"
+
+echo $a_file                                      # error. tries to expand the variables `a_file` which does not exist
+echo ${a}_file                                    # print "my_file"
+
+echo ${b:-"other"}                                # expands to the default value "other" if variable is empty/non-existent; only valid for non-positional parameters
+echo ${b}                                         # empty value
+
+echo ${c:="other"}                                # expands AND sets value of c = "other" if variable is  empty/non-existent; only valid for non-positional parameters
+echo ${c}                                         # "other"
+
+echo ${d:?"message"}                              # print "message" to stderr if variable is empty/non-existent
+echo ${d}                                         # print ""
+
+echo ${e:+"substitute"}                           # expand `e` as ""; if variable is non-empty, assign "substitute", if variable is empty/non-existent do nothing i.e. print nothing
+echo ${e}                                         # print ""
+
+e="value"
+echo ${e:+"substitute"}                           # expand `e` as "substitute" because `e` exists.
+echo ${e}                                         # print "substitute"
+
+echo ${!prefix*}                                  # expansion returns variables whose *names* (not value) begin with "prefix"
+
+echo ${#variable}                                 # expands to string length
+
+echo ${variable:offset:length}                    # expands to variable starting from offset (int) and ends at length (optional, int)
+echo ${variable: -offset:length}                  # same as above but with negative offset which starts from end similar to Python my_string[-2]; notice the space before '-'
+
+echo ${variable#pattern}                          # removes leading pattern match from variable and expands (non-greedy match)
+echo ${variable##pattern}                         # same as above but does greedy matching
+
+echo ${variable%pattern}                          # same as above but matches pattern at the end of the string
+echo ${variable%%pattern}                         # same as above but does greedy matching
+
+echo ${variable/pattern/repl}                     # match FIRST occurrence of pattern and replace with string
+echo ${variable//pattern/repl}                    # match ALL occurrences of pattern and replace with string
+echo ${variable/#pattern/repl}                    # match occurrence of pattern at the BEGINNING of variable and replace with string
+echo ${variable/%pattern/repl}                    # match occurrence of pattern at the END of variable and replace with string
+
+var = "aBcD"
+echo ${var,,}                                     # change all characters of `var` to lowercase
+echo ${var,}                                      # change first character of `var` to lowercase
+echo ${var^^}                                     # change all characters of `var` to uppercase
+echo ${var^}                                      # change first character of `var` to uppercase
+
+# numbers: arithmatic operations are similar to C
+echo $((-4))
+echo $((3-4))
+
+
 # here command
 command << _EOF_                                  # command takes text as input; _EOF_ is a token, any token could be used; use <<- to ignore leading tabs used for better readability
 text
